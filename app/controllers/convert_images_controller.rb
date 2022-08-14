@@ -10,7 +10,14 @@ class ConvertImagesController < ApplicationController
         
         image.update(image_binary: photo)
         @result = HTTParty.post( "https://textualapi.herokuapp.com/translates" , :body => { :image => photo}.to_json, :headers => { 'Content-Type' => 'application/json' } )
-        redirect_to root_path
+
+        puts "resultado del texto #{@result["message"]}"
+
+        image.update(text_result: @result["message"])
+
+
+        flash[:notice] = "texto de imagen =>  #{@result['message']}"
+        redirect_to new_convert_image_path
     end
 
     private
