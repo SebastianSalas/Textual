@@ -33,6 +33,16 @@
     <div class="text-center lg:text-center">
     <%= f.button "Continuar", type: "submit", class:"inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out", style:"background-color: red;"%>
 <% end %>
+<br>
+<br>
+
+<%if @convertI.present? %>
+    <h5 class="font-medium leading-tight text-xl" style="
+    justify-content: center;"> Tu texto es: <%=@message%></h5>
+    <%else%>
+    <h5 class="font-medium leading-tight text-xl" style="
+    justify-content: center;"> No ha sido posible detectar el texto de tu imagen ¡Lo sentimos!</h5>
+    <%end%>
 </div>
 </div>
 </div>
