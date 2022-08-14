@@ -9,7 +9,7 @@ class ConvertImagesController < ApplicationController
         photo = Base64.encode64(File.read(path))
         
         image.update(image_binary: photo)
-        #@result = HTTParty.post( , :body => { :image => photo}.to_json, :headers => { 'Content-Type' => 'application/json' } )
+        @result = HTTParty.post( "https://textualapi.herokuapp.com/translates" , :body => { :image => photo}.to_json, :headers => { 'Content-Type' => 'application/json' } )
         redirect_to root_path
     end
 
