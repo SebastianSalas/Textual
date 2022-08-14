@@ -1,29 +1,47 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<section class="h-screen">
+  <div class="px-6 h-full text-gray-800">
+    <div
+      class="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6"
+    >
+      <div
+        class="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0"
+      >
+      <h3 class="font-medium leading-tight text-3xl">Crear cuenta</h3>
+      <br>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="mb-6">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Correo electrónico", class:  "form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"%>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
+  <div class="mb-6">
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> charascters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: "Contraseña", class: "form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"%>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="mb-6">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirma contraseña", class: "form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="text-center lg:text-left">
+    <%= f.submit "Continuar", class:"inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out" %>
   </div>
 <% end %>
+<br>
+            <br>
+            <p class="text-sm font-semibold mt-2 pt-1 mb-0">
+              ¿Tienes una cuenta?
+              <%= link_to "Iniciar sesión", new_user_session_path,
+            
+                class:"text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out"
+                %>
+            </p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<%= render "devise/shared/links" %>
+
