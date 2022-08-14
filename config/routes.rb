@@ -6,6 +6,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :convert_images, only: [:new, :create]
+  resources :convert_images, only: [:new, :create, :index]
   root to: "home#index"
 end

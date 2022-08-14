@@ -1,4 +1,10 @@
 class ConvertImagesController < ApplicationController
+    before_action :authenticate_user!
+    
+    def index
+        @images = ConvertImage.where(user_id: current_user.id).order('created_at desc')
+    end
+
     def new
         @convert_image = ConvertImage.new
         image_id = params[:image_id].to_i unless params[:image_id].nil?
