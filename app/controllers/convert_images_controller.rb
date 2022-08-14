@@ -1,6 +1,6 @@
 class ConvertImagesController < ApplicationController
     before_action :authenticate_user!
-    
+
     def index
         @images = ConvertImage.where(user_id: current_user.id).order('created_at desc')
     end
@@ -24,7 +24,8 @@ class ConvertImagesController < ApplicationController
         photo = Base64.encode64(File.read(path))
         
         @image.update(image_binary: photo)
-        @result = HTTParty.post( "http://192.168.0.104:3000/translates" , :body => { :image => photo}.to_json, :headers => { 'Content-Type' => 'application/json' } )
+        #@result = HTTParty.post( "http://192.168.0.104:3000/translates" , :body => { :image => photo}.to_json, :headers => { 'Content-Type' => 'application/json' } )
+        @result = HTTParty.post( "https://textualapi.herokuapp.com/translates" , :body => { :image => photo}.to_json, :headers => { 'Content-Type' => 'application/json' } )
 
         #puts "resultado del texto #{@result["message"]}"
         @message = @result["message"]
